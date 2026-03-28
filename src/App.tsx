@@ -34,12 +34,13 @@ function Hero() {
         loop
         muted
         playsInline
+        webkit-playsinline="true"
         className="absolute inset-0 h-full w-full object-cover opacity-60"
       >
         <source src="https://belloumi.zo.space/videos/video1.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la balise vidéo.
       </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black pointer-events-none" />
       
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-white px-4">
         <motion.h1 
@@ -92,16 +93,16 @@ function Story() {
         />
         <div className="absolute inset-0 bg-black/60" />
         
-        <div className="relative z-10 text-center text-5xl md:text-8xl font-bold text-white px-4">
-          <motion.p style={{ opacity: opacity1 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full" dir="rtl">
-            موش مجرد سباق...
-          </motion.p>
-          <motion.p style={{ opacity: opacity2 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-emerald-400" dir="rtl">
-            رحلة داخل الطبيعة
-          </motion.p>
-          <motion.p style={{ opacity: opacity3 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-blue-400" dir="rtl">
-            تحدي حقيقي
-          </motion.p>
+        <div className="relative z-10 w-full h-full text-center text-5xl md:text-8xl font-bold text-white px-4">
+          <motion.div style={{ opacity: opacity1 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none" dir="rtl">
+            <p>موش مجرد سباق...</p>
+          </motion.div>
+          <motion.div style={{ opacity: opacity2 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none text-emerald-400" dir="rtl">
+            <p>رحلة داخل الطبيعة</p>
+          </motion.div>
+          <motion.div style={{ opacity: opacity3 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none text-blue-400" dir="rtl">
+            <p>تحدي حقيقي</p>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -158,19 +159,20 @@ function ImmersiveVideo() {
   return (
     <div ref={containerRef} className="bg-black py-24 px-4 overflow-hidden">
       <motion.div 
-        style={{ scale, opacity }}
-        className="mx-auto max-w-7xl aspect-video rounded-3xl overflow-hidden border border-white/10 relative"
+        style={{ scale, opacity, WebkitTransform: 'translateZ(0)' }}
+        className="mx-auto max-w-7xl aspect-video rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl"
       >
         <video
           autoPlay
           loop
           muted
           playsInline
+          webkit-playsinline="true"
           className="w-full h-full object-cover"
         >
           <source src="https://belloumi.zo.space/videos/video2.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 md:p-16">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 md:p-16 pointer-events-none">
           <h2 className="text-3xl md:text-6xl font-bold text-white" dir="rtl">عش التجربة...</h2>
         </div>
       </motion.div>
@@ -321,24 +323,27 @@ function Gallery() {
           {mediaItems.map((item, i) => (
             <motion.div
               key={i}
-              className="relative h-64 md:h-96 overflow-hidden rounded-2xl cursor-pointer group bg-zinc-900"
+              className="relative h-64 md:h-96 overflow-hidden rounded-2xl cursor-pointer group bg-zinc-900 shadow-xl"
+              style={{ WebkitTransform: 'translateZ(0)' }}
               whileHover={{ scale: 0.98 }}
               onClick={() => setSelectedId(i)}
             >
               {item.type === 'video' ? (
                 <video 
                   src={item.src}
-                  autoPlay loop muted playsInline
+                  autoPlay loop muted playsInline webkit-playsinline="true"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               ) : (
                 <motion.img 
                   src={item.src} 
+                  loading="lazy"
+                  decoding="async"
                   alt={`Gallery ${i}`}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               )}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               {item.type === 'video' && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20">
@@ -362,13 +367,15 @@ function Gallery() {
               {mediaItems[selectedId].type === 'video' ? (
                 <video 
                   src={mediaItems[selectedId].src}
-                  controls autoPlay playsInline
+                  controls autoPlay playsInline webkit-playsinline="true"
                   className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain outline-none"
                   onClick={(e) => e.stopPropagation()}
                 />
               ) : (
                 <motion.img 
                   src={mediaItems[selectedId].src} 
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
@@ -428,7 +435,7 @@ function CTA() {
 
 export default function App() {
   return (
-    <div className="bg-black text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-32">
+    <div className="bg-black text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-32 overflow-x-hidden min-h-screen">
       <Cursor />
       <Hero />
       <Story />
