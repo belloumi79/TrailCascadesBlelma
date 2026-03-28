@@ -93,14 +93,14 @@ function Story() {
         />
         <div className="absolute inset-0 bg-black/60" />
         
-        <div className="relative z-10 text-center text-5xl md:text-8xl font-bold text-white px-4">
-          <motion.p style={{ opacity: opacity1 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full" dir="rtl">
+        <div className="relative z-10 grid place-items-center text-center text-5xl md:text-8xl font-bold text-white px-4 w-full">
+          <motion.p style={{ opacity: opacity1 }} className="col-start-1 row-start-1 w-full" dir="rtl">
             موش مجرد سباق...
           </motion.p>
-          <motion.p style={{ opacity: opacity2 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-emerald-400" dir="rtl">
+          <motion.p style={{ opacity: opacity2 }} className="col-start-1 row-start-1 w-full text-emerald-400" dir="rtl">
             رحلة داخل الطبيعة
           </motion.p>
-          <motion.p style={{ opacity: opacity3 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-blue-400" dir="rtl">
+          <motion.p style={{ opacity: opacity3 }} className="col-start-1 row-start-1 w-full text-blue-400" dir="rtl">
             تحدي حقيقي
           </motion.p>
         </div>
