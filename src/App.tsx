@@ -93,16 +93,16 @@ function Story() {
         />
         <div className="absolute inset-0 bg-black/60" />
         
-        <div className="relative z-10 w-full h-full text-center text-5xl md:text-8xl font-bold text-white px-4">
-          <motion.div style={{ opacity: opacity1 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none" dir="rtl">
-            <p>موش مجرد سباق...</p>
-          </motion.div>
-          <motion.div style={{ opacity: opacity2 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none text-emerald-400" dir="rtl">
-            <p>رحلة داخل الطبيعة</p>
-          </motion.div>
-          <motion.div style={{ opacity: opacity3 }} className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none text-blue-400" dir="rtl">
-            <p>تحدي حقيقي</p>
-          </motion.div>
+        <div className="relative z-10 text-center text-5xl md:text-8xl font-bold text-white px-4">
+          <motion.p style={{ opacity: opacity1 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full" dir="rtl">
+            موش مجرد سباق...
+          </motion.p>
+          <motion.p style={{ opacity: opacity2 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-emerald-400" dir="rtl">
+            رحلة داخل الطبيعة
+          </motion.p>
+          <motion.p style={{ opacity: opacity3 }} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-blue-400" dir="rtl">
+            تحدي حقيقي
+          </motion.p>
         </div>
       </div>
     </div>
@@ -435,7 +435,7 @@ function CTA() {
 
 export default function App() {
   return (
-    <div className="bg-black text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-32 overflow-x-hidden min-h-screen">
+    <div className="bg-black text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-32">
       <Cursor />
       <Hero />
       <Story />
